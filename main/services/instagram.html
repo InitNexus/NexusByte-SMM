@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Instagram Services</title>
+  <link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
+  <link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/dark.css">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100dvh;
+    }
+
+    body {
+      background: radial-gradient(ellipse at 50% 60%, rgba(100, 60, 180, 0.18) 0%, transparent 70%),
+                  linear-gradient(160deg, #111116 0%, #1a1420 50%, #0f0f14 100%);
+      background-color: #111116;
+      background-attachment: fixed;
+    }
+
+    .navbar {
+      background-color: rgba(26, 20, 32, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      left: 0;
+      right: 0;
+    }
+
+    .navbar-brand {
+      color: #ffffff;
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-display);
+      text-decoration: none;
+    }
+
+    .nav-icon-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+    }
+
+    .nav-icon-btn:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-icon-btn img {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .sheet {
+      background-color: #1e1a2e;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .sheet-title {
+      color: #ffffff;
+    }
+
+    .sheet-handle {
+      cursor: pointer;
+      margin: var(--spacing-3) auto var(--spacing-1);
+    }
+
+    .sheet-close-bar {
+      display: flex;
+      justify-content: center;
+      padding: var(--spacing-3) 0 0;
+      cursor: pointer;
+    }
+
+    .sheet-close-bar-inner {
+      width: 36px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-full);
+    }
+
+    .sheet-menu-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) var(--spacing-4);
+      border-bottom: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      text-decoration: none;
+      border-radius: 10px;
+      margin: 0 var(--spacing-2);
+    }
+
+    .sheet-menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .sheet-menu-item:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .sheet-menu-item img {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .sheet-menu-item span {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .sheet-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 499;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .services-submenu {
+      display: none;
+      flex-direction: column;
+      background-color: rgba(255, 255, 255, 0.04);
+      border-radius: 10px;
+      margin: 0 var(--spacing-2) var(--spacing-1);
+      padding: var(--spacing-1);
+    }
+
+    .services-submenu.open {
+      display: flex;
+    }
+
+    .submenu-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) var(--spacing-4);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+
+    .submenu-item:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .submenu-item img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .submenu-item span {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .submenu-divider {
+      height: 1px;
+      background-color: rgba(255, 255, 255, 0.09);
+      margin: var(--spacing-1) var(--spacing-2);
+    }
+
+    .submenu-header {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) var(--spacing-4);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      border-radius: 10px;
+    }
+
+    .submenu-header:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .submenu-header img {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .submenu-header span {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    @media (max-width: 767px) {
+      .navbar-brand {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <span class="navbar-brand">NexusByte SMM</span>
+    <div class="navbar-actions">
+      <a href="https://initnexus.github.io/NexusByte-SMM/main/home.html" class="nav-icon-btn">
+        <img src="https://initnexus.github.io/Core/media/icons/home.png" alt="">
+      </a>
+      <a href="https://initnexus.github.io/NexusByte-SMM/main/search.html" class="nav-icon-btn">
+        <img src="https://initnexus.github.io/Core/media/icons/search.png" alt="">
+      </a>
+      <button class="nav-icon-btn" data-sheet-open="sheet-menu" data-sheet-overlay="sheet-overlay">
+        <img src="https://initnexus.github.io/Core/media/icons/menu.png" alt="">
+      </button>
+    </div>
+  </nav>
+
+  <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
+
+  <div id="sheet-menu" class="sheet sheet-bottom">
+    <div class="sheet-close-bar" onclick="document.getElementById('sheet-menu').classList.remove('open'); document.getElementById('sheet-overlay').style.display='none';">
+      <div class="sheet-close-bar-inner"></div>
+    </div>
+    <div class="sheet-header">
+      <span class="sheet-title">Menu</span>
+    </div>
+    <div class="sheet-body" style="padding: var(--spacing-2) 0;">
+      <div class="list">
+        <div class="sheet-menu-item" id="services-trigger" onclick="var s=document.getElementById('services-submenu');var t=document.getElementById('services-trigger');s.classList.toggle('open');t.style.display=s.classList.contains('open')?'none':'flex';">
+          <img src="https://initnexus.github.io/Core/media/icons/grid.png" alt="">
+          <span>Services</span>
+        </div>
+        <div id="services-submenu" class="services-submenu">
+          <div class="submenu-header" onclick="var s=document.getElementById('services-submenu');var t=document.getElementById('services-trigger');s.classList.remove('open');t.style.display='flex';">
+            <img src="https://initnexus.github.io/Core/media/icons/grid.png" alt="">
+            <span>Services</span>
+          </div>
+          <div class="submenu-divider"></div>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/instagram.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/instagram.png" alt="">
+            <span>Instagram</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/tiktok.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/tiktok.png" alt="">
+            <span>TikTok</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/youtube.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/youtube.png" alt="">
+            <span>YouTube</span>
+          </a>
+        </div>
+        <a href="https://initnexus.github.io/NexusByte-SMM/main/information.html" class="sheet-menu-item">
+          <img src="https://initnexus.github.io/Core/media/icons/information.png" alt="">
+          <span>Information</span>
+        </a>
+        <a href="https://initnexus.github.io/NexusByte-SMM/main/settings.html" class="sheet-menu-item">
+          <img src="https://initnexus.github.io/Core/media/icons/settings.png" alt="">
+          <span>Settings</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+</body>
+</html>
