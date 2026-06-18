@@ -7,13 +7,19 @@
   <link rel="stylesheet" href="https://initnexus.github.io/Core/styling/core.css">
   <link id="nb-theme-stylesheet" rel="stylesheet" href="https://initnexus.github.io/Core/styling/themes/dark.css">
   <style>
-    html, body {
+    html {
       margin: 0;
       padding: 0;
-      min-height: 100dvh;
+      height: 100dvh;
     }
 
     body {
+      margin: 0;
+      padding: 0;
+      min-height: 100dvh;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
       background: radial-gradient(ellipse at 50% 60%, rgba(100, 60, 180, 0.18) 0%, transparent 70%),
                   linear-gradient(160deg, #111116 0%, #1a1420 50%, #0f0f14 100%);
       background-color: #111116;
@@ -239,8 +245,6 @@
     }
 
     .site-footer {
-      position: fixed;
-      bottom: 0;
       left: 0;
       right: 0;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
@@ -248,6 +252,7 @@
       align-items: center;
       justify-content: center;
       padding: var(--spacing-3) var(--spacing-4);
+      flex-shrink: 0;
     }
 
     .site-footer p {
@@ -259,11 +264,207 @@
     .page-heading {
       text-align: center;
       padding: var(--spacing-6) var(--spacing-4) 0;
+      flex-shrink: 0;
     }
 
     .page-heading h3 {
       margin: 0;
       color: #ffffff;
+    }
+
+    .page-content {
+      flex: 1;
+      margin: var(--spacing-4);
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+      overflow-y: auto;
+    }
+
+    .settings-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      margin-bottom: var(--spacing-3);
+    }
+
+    .settings-bar:last-child {
+      margin-bottom: 0;
+    }
+
+    .settings-bar:hover {
+      background-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .settings-bar-left {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .settings-bar-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .settings-bar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+    }
+
+    .settings-bar-value {
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.45);
+      font-family: var(--font-ui);
+    }
+
+    .settings-save-btn {
+      display: none;
+      padding: var(--spacing-1) var(--spacing-3);
+      background-color: #9b7fe8;
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .settings-save-btn:hover {
+      background-color: #b09af0;
+    }
+
+    .settings-save-btn.visible {
+      display: inline-flex;
+    }
+
+    .pref-sheet-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 599;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .pref-sheet {
+      position: fixed;
+      bottom: -100%;
+      left: 0;
+      right: 0;
+      z-index: 600;
+      background-color: #1e1a2e;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: 16px 16px 0 0;
+      transition: bottom 0.3s ease;
+      max-height: 70dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pref-sheet.open {
+      bottom: 0;
+    }
+
+    .pref-sheet-close-bar {
+      display: flex;
+      justify-content: center;
+      padding: var(--spacing-3) 0 0;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .pref-sheet-close-bar-inner {
+      width: 36px;
+      height: 4px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: var(--radius-full);
+    }
+
+    .pref-sheet-header {
+      padding: var(--spacing-3) var(--spacing-4) var(--spacing-2);
+      flex-shrink: 0;
+    }
+
+    .pref-sheet-title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-display);
+    }
+
+    .pref-sheet-body {
+      overflow-y: auto;
+      padding: var(--spacing-2) var(--spacing-2) var(--spacing-4);
+    }
+
+    .pref-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-3) var(--spacing-4);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    .pref-option:hover {
+      background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    .pref-option span {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .pref-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--transition-fast);
+    }
+
+    .pref-radio-inner {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #9b7fe8;
+      display: none;
+    }
+
+    .pref-option.selected .pref-radio {
+      border-color: #9b7fe8;
+    }
+
+    .pref-option.selected .pref-radio-inner {
+      display: block;
     }
 
     @media (max-width: 767px) {
@@ -297,6 +498,27 @@
 
   <div class="page-heading">
     <h3>Settings</h3>
+  </div>
+
+  <div class="page-content">
+    <div class="settings-bar" onclick="openPrefSheet('theme')">
+      <div class="settings-bar-left">
+        <span class="settings-bar-label">Theme</span>
+      </div>
+      <div class="settings-bar-right">
+        <span class="settings-bar-value" id="theme-bar-value"></span>
+        <button class="settings-save-btn" id="theme-save-btn" onclick="event.stopPropagation(); savePref('theme')">Save</button>
+      </div>
+    </div>
+    <div class="settings-bar" onclick="openPrefSheet('lang')">
+      <div class="settings-bar-left">
+        <span class="settings-bar-label">Language</span>
+      </div>
+      <div class="settings-bar-right">
+        <span class="settings-bar-value" id="lang-bar-value"></span>
+        <button class="settings-save-btn" id="lang-save-btn" onclick="event.stopPropagation(); savePref('lang')">Save</button>
+      </div>
+    </div>
   </div>
 
   <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
@@ -397,10 +619,160 @@
     </div>
   </div>
 
+  <div id="pref-overlay" class="pref-sheet-overlay" onclick="closePrefSheet()"></div>
+
+  <div id="theme-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Theme</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="theme" data-value="light" onclick="selectPref('theme', 'light', 'Light')">
+        <span>Light</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="theme" data-value="dark" onclick="selectPref('theme', 'dark', 'Dark')">
+        <span>Dark</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="theme" data-value="midnight" onclick="selectPref('theme', 'midnight', 'Midnight')">
+        <span>Midnight</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="theme" data-value="amoled" onclick="selectPref('theme', 'amoled', 'Amoled')">
+        <span>Amoled</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="lang-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Language</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="lang" data-value="en" onclick="selectPref('lang', 'en', 'English')">
+        <span>English</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="fr" onclick="selectPref('lang', 'fr', 'French')">
+        <span>French</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="es" onclick="selectPref('lang', 'es', 'Spanish')">
+        <span>Spanish</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="de" onclick="selectPref('lang', 'de', 'German')">
+        <span>German</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="ru" onclick="selectPref('lang', 'ru', 'Russian')">
+        <span>Russian</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="pt" onclick="selectPref('lang', 'pt', 'Portuguese')">
+        <span>Portuguese</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="zh" onclick="selectPref('lang', 'zh', 'Chinese')">
+        <span>Chinese</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="lang" data-value="ja" onclick="selectPref('lang', 'ja', 'Japanese')">
+        <span>Japanese</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>&copy; NexusByte SMM 2026. All Rights Reserved.</p>
   </footer>
 
   <script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+  <script>
+    const THEME_LABELS = { light: 'Light', dark: 'Dark', midnight: 'Midnight', amoled: 'Amoled' };
+    const LANG_LABELS = { en: 'English', fr: 'French', es: 'Spanish', de: 'German', ru: 'Russian', pt: 'Portuguese', zh: 'Chinese', ja: 'Japanese' };
+
+    let pendingTheme = null;
+    let pendingLang = null;
+    let activeSheet = null;
+
+    function initSettingsBars() {
+      const theme = NexusByte.getTheme();
+      const lang = NexusByte.getLanguage();
+      document.getElementById('theme-bar-value').textContent = THEME_LABELS[theme] || theme;
+      document.getElementById('lang-bar-value').textContent = LANG_LABELS[lang] || lang;
+      markSelected('theme', theme);
+      markSelected('lang', lang);
+    }
+
+    function markSelected(pref, value) {
+      document.querySelectorAll(`[data-pref="${pref}"]`).forEach(el => {
+        el.classList.toggle('selected', el.getAttribute('data-value') === value);
+      });
+    }
+
+    function openPrefSheet(pref) {
+      closePrefSheet();
+      const sheet = document.getElementById(`${pref}-sheet`);
+      const overlay = document.getElementById('pref-overlay');
+      if (!sheet) return;
+      overlay.style.display = 'block';
+      requestAnimationFrame(() => sheet.classList.add('open'));
+      activeSheet = pref;
+    }
+
+    function closePrefSheet() {
+      if (activeSheet) {
+        const sheet = document.getElementById(`${activeSheet}-sheet`);
+        if (sheet) sheet.classList.remove('open');
+      }
+      document.getElementById('pref-overlay').style.display = 'none';
+      activeSheet = null;
+    }
+
+    function selectPref(pref, value, label) {
+      markSelected(pref, value);
+      if (pref === 'theme') {
+        pendingTheme = value;
+        document.getElementById('theme-bar-value').textContent = label;
+        document.getElementById('theme-save-btn').classList.add('visible');
+        NexusByte.setTheme(value);
+      } else {
+        pendingLang = value;
+        document.getElementById('lang-bar-value').textContent = label;
+        document.getElementById('lang-save-btn').classList.add('visible');
+      }
+    }
+
+    function savePref(pref) {
+      if (pref === 'theme' && pendingTheme) {
+        NexusByte.setTheme(pendingTheme);
+        pendingTheme = null;
+        document.getElementById('theme-save-btn').classList.remove('visible');
+      } else if (pref === 'lang' && pendingLang) {
+        NexusByte.setLanguage(pendingLang);
+        pendingLang = null;
+        document.getElementById('lang-save-btn').classList.remove('visible');
+      }
+    }
+
+    document.addEventListener('nb:themechange', () => {
+      const theme = NexusByte.getTheme();
+      document.getElementById('theme-bar-value').textContent = THEME_LABELS[theme] || theme;
+      markSelected('theme', theme);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(initSettingsBars, 100);
+    });
+  </script>
 </body>
 </html>
