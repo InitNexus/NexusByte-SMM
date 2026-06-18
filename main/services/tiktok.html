@@ -219,9 +219,61 @@
       font-family: var(--font-ui);
     }
 
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+    }
+
+    *::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    *::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-full);
+    }
+
+    .site-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-3) var(--spacing-4);
+    }
+
+    .site-footer p {
+      margin: 0;
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    .page-heading {
+      text-align: center;
+      padding: var(--spacing-6) var(--spacing-4) 0;
+    }
+
+    .page-heading h3 {
+      margin: 0;
+      color: #ffffff;
+    }
+
     @media (max-width: 767px) {
       .navbar-brand {
         display: none;
+      }
+      .navbar-actions {
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
       }
     }
   </style>
@@ -242,6 +294,10 @@
       </button>
     </div>
   </nav>
+
+  <div class="page-heading">
+    <h3>TikTok Services</h3>
+  </div>
 
   <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
 
@@ -264,17 +320,69 @@
             <span>Services</span>
           </div>
           <div class="submenu-divider"></div>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/facebook.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/facebook.png" alt="">
+            <span>Facebook</span>
+          </a>
           <a href="https://initnexus.github.io/NexusByte-SMM/main/services/instagram.html" class="submenu-item">
             <img src="https://initnexus.github.io/Core/media/icons/instagram.png" alt="">
             <span>Instagram</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/threads.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/threads.png" alt="">
+            <span>Threads</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/whatsapp.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/whatsapp.png" alt="">
+            <span>WhatsApp</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/telegram.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/telegram.png" alt="">
+            <span>Telegram</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/x.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/x.png" alt="">
+            <span>X</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/snapchat.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/snapchat.png" alt="">
+            <span>SnapChat</span>
           </a>
           <a href="https://initnexus.github.io/NexusByte-SMM/main/services/tiktok.html" class="submenu-item">
             <img src="https://initnexus.github.io/Core/media/icons/tiktok.png" alt="">
             <span>TikTok</span>
           </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/discord.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/discord.png" alt="">
+            <span>Discord</span>
+          </a>
           <a href="https://initnexus.github.io/NexusByte-SMM/main/services/youtube.html" class="submenu-item">
             <img src="https://initnexus.github.io/Core/media/icons/youtube.png" alt="">
             <span>YouTube</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/spotify.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/spotify.png" alt="">
+            <span>Spotify</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/soundcloud.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/soundcloud.png" alt="">
+            <span>SoundCloud</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/reddit.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/reddit.png" alt="">
+            <span>Reddit</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/pinterest.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/pinterest.png" alt="">
+            <span>Pinterest</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/twitch.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/twitch.png" alt="">
+            <span>Twitch</span>
+          </a>
+          <a href="https://initnexus.github.io/NexusByte-SMM/main/services/kik.html" class="submenu-item">
+            <img src="https://initnexus.github.io/Core/media/icons/kik.png" alt="">
+            <span>Kik</span>
           </a>
         </div>
         <a href="https://initnexus.github.io/NexusByte-SMM/main/information.html" class="sheet-menu-item">
@@ -288,6 +396,10 @@
       </div>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <p>&copy; NexusByte SMM 2026. All Rights Reserved.</p>
+  </footer>
 
   <script src="https://initnexus.github.io/Core/scripts/core.js"></script>
 </body>
