@@ -25,3 +25,8 @@ Below, is a full list of platforms that we offer services for:
 - Pinterest
 - Twitch
 - Kik
+
+---
+
+### Purchases
+In order to actually purchase our SMM services, please get in contact with us. You can do so via the information provided on our [Portal](https://initnexus.github.io/Portal) page.
