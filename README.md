@@ -3,3 +3,25 @@ Welcome to the **NexusByte SMM** repository. **NexusByte SMM** is a platform whe
 
 > [!WARNING]
 > This repository does NOT contain any functionality to process payments. Only front-end code, assets and media are present. GitHub does not allow payment processing or functionality and we are abiding by their terms and policies.
+
+---
+
+### Supported Platforms
+Below, is a full list of platforms that we offer services for:  
+
+- Facebook
+- Instagram
+- Threads
+- WhatsApp
+- Telegram
+- X
+- SnapChat
+- TikTok
+- Discord
+- YouTube
+- Spotify
+- SoundCloud
+- Reddit
+- Pinterest
+- Twitch
+- Kik
