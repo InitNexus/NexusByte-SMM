@@ -284,8 +284,7 @@
 
     .settings-bar {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
       width: 100%;
       background-color: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.07);
@@ -296,6 +295,7 @@
       transition: background-color var(--transition-fast);
       -webkit-tap-highlight-color: transparent;
       margin-bottom: var(--spacing-3);
+      gap: var(--spacing-2);
     }
 
     .settings-bar:last-child {
@@ -304,6 +304,13 @@
 
     .settings-bar:hover {
       background-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .settings-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
     }
 
     .settings-bar-left {
@@ -344,6 +351,7 @@
       cursor: pointer;
       transition: background-color var(--transition-fast);
       -webkit-tap-highlight-color: transparent;
+      align-self: flex-start;
     }
 
     .settings-save-btn:hover {
@@ -352,6 +360,47 @@
 
     .settings-save-btn.visible {
       display: inline-flex;
+    }
+
+    .api-section {
+      margin-top: var(--spacing-6);
+    }
+
+    .api-section-title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-ui);
+      margin: 0 0 var(--spacing-1);
+    }
+
+    .api-section-desc {
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.5);
+      font-family: var(--font-ui);
+      margin: 0 0 var(--spacing-3);
+    }
+
+    .api-input {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      color: #ffffff;
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .api-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .api-input:focus {
+      border-color: rgba(155, 127, 232, 0.5);
     }
 
     .pref-sheet-overlay {
@@ -502,22 +551,75 @@
 
   <div class="page-content">
     <div class="settings-bar" onclick="openPrefSheet('theme')">
-      <div class="settings-bar-left">
-        <span class="settings-bar-label">Theme</span>
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Theme</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="theme-bar-value"></span>
+        </div>
       </div>
-      <div class="settings-bar-right">
-        <span class="settings-bar-value" id="theme-bar-value"></span>
-        <button class="settings-save-btn" id="theme-save-btn" onclick="event.stopPropagation(); savePref('theme')">Save</button>
-      </div>
+      <button class="settings-save-btn" id="theme-save-btn" onclick="event.stopPropagation(); savePref('theme')">Save</button>
     </div>
     <div class="settings-bar" onclick="openPrefSheet('lang')">
-      <div class="settings-bar-left">
-        <span class="settings-bar-label">Language</span>
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Language</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="lang-bar-value"></span>
+        </div>
       </div>
-      <div class="settings-bar-right">
-        <span class="settings-bar-value" id="lang-bar-value"></span>
-        <button class="settings-save-btn" id="lang-save-btn" onclick="event.stopPropagation(); savePref('lang')">Save</button>
+      <button class="settings-save-btn" id="lang-save-btn" onclick="event.stopPropagation(); savePref('lang')">Save</button>
+    </div>
+    <div class="settings-bar" onclick="openPrefSheet('cookies')">
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Cookies</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="cookies-bar-value"></span>
+        </div>
       </div>
+      <button class="settings-save-btn" id="cookies-save-btn" onclick="event.stopPropagation(); savePref('cookies')">Save</button>
+    </div>
+    <div class="settings-bar" onclick="openPrefSheet('analytics')">
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Analytics</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="analytics-bar-value"></span>
+        </div>
+      </div>
+      <button class="settings-save-btn" id="analytics-save-btn" onclick="event.stopPropagation(); savePref('analytics')">Save</button>
+    </div>
+    <div class="settings-bar" onclick="openPrefSheet('beta')">
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Beta features</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="beta-bar-value"></span>
+        </div>
+      </div>
+      <button class="settings-save-btn" id="beta-save-btn" onclick="event.stopPropagation(); savePref('beta')">Save</button>
+    </div>
+    <div class="settings-bar" onclick="openPrefSheet('devfeatures')">
+      <div class="settings-bar-row">
+        <div class="settings-bar-left">
+          <span class="settings-bar-label">Developer features</span>
+        </div>
+        <div class="settings-bar-right">
+          <span class="settings-bar-value" id="devfeatures-bar-value"></span>
+        </div>
+      </div>
+      <button class="settings-save-btn" id="devfeatures-save-btn" onclick="event.stopPropagation(); savePref('devfeatures')">Save</button>
+    </div>
+    <div class="api-section">
+      <p class="api-section-title">NexusByte SMM API key</p>
+      <p class="api-section-desc">Enter your API key for NexusByte SMM</p>
+      <input class="api-input" type="text" placeholder="Enter your API key...">
     </div>
   </div>
 
@@ -691,6 +793,82 @@
     </div>
   </div>
 
+  <div id="cookies-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Cookies</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="cookies" data-value="allow" onclick="selectPref('cookies', 'allow', 'Allow')">
+        <span>Allow</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="cookies" data-value="deny" onclick="selectPref('cookies', 'deny', 'Deny')">
+        <span>Deny</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="analytics-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Analytics</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="analytics" data-value="allow" onclick="selectPref('analytics', 'allow', 'Allow')">
+        <span>Allow</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="analytics" data-value="deny" onclick="selectPref('analytics', 'deny', 'Deny')">
+        <span>Deny</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="beta-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Beta features</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="beta" data-value="allow" onclick="selectPref('beta', 'allow', 'Allow')">
+        <span>Allow</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="beta" data-value="deny" onclick="selectPref('beta', 'deny', 'Deny')">
+        <span>Deny</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="devfeatures-sheet" class="pref-sheet">
+    <div class="pref-sheet-close-bar" onclick="closePrefSheet()">
+      <div class="pref-sheet-close-bar-inner"></div>
+    </div>
+    <div class="pref-sheet-header">
+      <span class="pref-sheet-title">Developer features</span>
+    </div>
+    <div class="pref-sheet-body">
+      <div class="pref-option" data-pref="devfeatures" data-value="allow" onclick="selectPref('devfeatures', 'allow', 'Allow')">
+        <span>Allow</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+      <div class="pref-option" data-pref="devfeatures" data-value="deny" onclick="selectPref('devfeatures', 'deny', 'Deny')">
+        <span>Deny</span>
+        <div class="pref-radio"><div class="pref-radio-inner"></div></div>
+      </div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>&copy; NexusByte SMM 2026. All Rights Reserved.</p>
   </footer>
@@ -699,9 +877,9 @@
   <script>
     const THEME_LABELS = { light: 'Light', dark: 'Dark', midnight: 'Midnight', amoled: 'Amoled' };
     const LANG_LABELS = { en: 'English', fr: 'French', es: 'Spanish', de: 'German', ru: 'Russian', pt: 'Portuguese', zh: 'Chinese', ja: 'Japanese' };
+    const TOGGLE_PREFS = ['cookies', 'analytics', 'beta', 'devfeatures'];
 
-    let pendingTheme = null;
-    let pendingLang = null;
+    let pending = {};
     let activeSheet = null;
 
     function initSettingsBars() {
@@ -711,6 +889,11 @@
       document.getElementById('lang-bar-value').textContent = LANG_LABELS[lang] || lang;
       markSelected('theme', theme);
       markSelected('lang', lang);
+      TOGGLE_PREFS.forEach(key => {
+        const val = localStorage.getItem(`nb_${key}`) || 'deny';
+        document.getElementById(`${key}-bar-value`).textContent = val.charAt(0).toUpperCase() + val.slice(1);
+        markSelected(key, val);
+      });
     }
 
     function markSelected(pref, value) {
@@ -740,28 +923,23 @@
 
     function selectPref(pref, value, label) {
       markSelected(pref, value);
-      if (pref === 'theme') {
-        pendingTheme = value;
-        document.getElementById('theme-bar-value').textContent = label;
-        document.getElementById('theme-save-btn').classList.add('visible');
-        NexusByte.setTheme(value);
-      } else {
-        pendingLang = value;
-        document.getElementById('lang-bar-value').textContent = label;
-        document.getElementById('lang-save-btn').classList.add('visible');
-      }
+      pending[pref] = value;
+      document.getElementById(`${pref}-bar-value`).textContent = label;
+      document.getElementById(`${pref}-save-btn`).classList.add('visible');
+      if (pref === 'theme') NexusByte.setTheme(value);
     }
 
     function savePref(pref) {
-      if (pref === 'theme' && pendingTheme) {
-        NexusByte.setTheme(pendingTheme);
-        pendingTheme = null;
-        document.getElementById('theme-save-btn').classList.remove('visible');
-      } else if (pref === 'lang' && pendingLang) {
-        NexusByte.setLanguage(pendingLang);
-        pendingLang = null;
-        document.getElementById('lang-save-btn').classList.remove('visible');
+      if (!pending[pref]) return;
+      if (pref === 'theme') {
+        NexusByte.setTheme(pending[pref]);
+      } else if (pref === 'lang') {
+        NexusByte.setLanguage(pending[pref]);
+      } else {
+        localStorage.setItem(`nb_${pref}`, pending[pref]);
       }
+      delete pending[pref];
+      document.getElementById(`${pref}-save-btn`).classList.remove('visible');
     }
 
     document.addEventListener('nb:themechange', () => {

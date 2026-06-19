@@ -14,6 +14,8 @@
     }
 
     body {
+      display: flex;
+      flex-direction: column;
       background: radial-gradient(ellipse at 50% 60%, rgba(100, 60, 180, 0.18) 0%, transparent 70%),
                   linear-gradient(160deg, #111116 0%, #1a1420 50%, #0f0f14 100%);
       background-color: #111116;
@@ -239,10 +241,6 @@
     }
 
     .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
       display: flex;
       align-items: center;
@@ -266,6 +264,107 @@
       color: #ffffff;
     }
 
+    .page-content {
+      flex: 1;
+      margin: var(--spacing-4);
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+      text-align: left;
+    }
+
+    .home-section-title {
+      margin: 0 0 var(--spacing-2);
+      color: #ffffff;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+    }
+
+    .home-section-body {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      line-height: 1.65;
+    }
+
+    .home-spacer {
+      height: var(--spacing-10);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-3);
+      margin-top: var(--spacing-3);
+    }
+
+    .home-card {
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: var(--spacing-4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--spacing-3);
+    }
+
+    .home-card img {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+
+    .home-card-title {
+      margin: 0;
+      color: #ffffff;
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+    }
+
+    .home-card-body {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      line-height: 1.6;
+    }
+
+    .contact-fields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-3);
+      margin-top: var(--spacing-3);
+    }
+
+    .contact-input {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      color: #ffffff;
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      outline: none;
+      transition: border-color var(--transition-fast);
+      resize: none;
+    }
+
+    .contact-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .contact-input:focus {
+      border-color: rgba(155, 127, 232, 0.5);
+    }
+
     @media (max-width: 767px) {
       .navbar-brand {
         display: none;
@@ -274,6 +373,9 @@
         display: flex;
         justify-content: space-evenly;
         width: 100%;
+      }
+      .cards-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -297,6 +399,50 @@
 
   <div class="page-heading">
     <h3>NexusByte SMM</h3>
+  </div>
+
+  <div class="page-content">
+
+    <p class="home-section-title">Welcome to NexusByte SMM</p>
+    <p class="home-section-body">NexusByte SMM is a platform where you can boost your social media presence and audience engagement. Unlike most platforms, we offer organic services as well as fake engagement. What we mean by "fake" is mass created accounts which will interact with you. Our organic 'services' are real people who receive a cut of what you pay us and they will engage with you.</p>
+
+    <div class="home-spacer"></div>
+
+    <p class="home-section-title">Why choose us</p>
+    <div class="cards-grid">
+      <div class="home-card">
+        <img src="https://initnexus.github.io/Core/media/icons/bolt.png" alt="">
+        <p class="home-card-title">Fast</p>
+        <p class="home-card-body">All services are delivered within an hour (unless you customise delivery time yourself).</p>
+      </div>
+      <div class="home-card">
+        <img src="https://initnexus.github.io/Core/media/icons/verified.png" alt="">
+        <p class="home-card-title">Reliable</p>
+        <p class="home-card-body">You won't see any drops or dips when you order from us. What you pay for is what you keep.</p>
+      </div>
+      <div class="home-card">
+        <img src="https://initnexus.github.io/Core/media/icons/handshake.png" alt="">
+        <p class="home-card-title">Honest</p>
+        <p class="home-card-body">We're fully transparent. No hidden goals or fake promises that we can't keep.</p>
+      </div>
+    </div>
+
+    <div class="home-spacer"></div>
+
+    <p class="home-section-title">Something you should know</p>
+    <p class="home-section-body">Unlike other platforms which boast services which honestly aren't that great, we do things properly. We spent months and months researching all of the platforms we offer services for. We analyzed every way that these platforms are able to detect third party growth. We're proud to say that our services will not get you caught. Your accounts are safe, your statistics and analytics will not decrease after so long.</p>
+
+    <div class="home-spacer"></div>
+
+    <p class="home-section-title">Contact us</p>
+    <p class="home-section-body">Got a question or just want to say hello?</p>
+    <div class="contact-fields">
+      <input class="contact-input" type="text" placeholder="Name">
+      <input class="contact-input" type="email" placeholder="Email address">
+      <input class="contact-input" type="text" placeholder="Subject">
+      <textarea class="contact-input" rows="5" placeholder="Message"></textarea>
+    </div>
+
   </div>
 
   <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
