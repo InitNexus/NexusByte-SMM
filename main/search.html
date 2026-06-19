@@ -14,6 +14,8 @@
     }
 
     body {
+      display: flex;
+      flex-direction: column;
       background: radial-gradient(ellipse at 50% 60%, rgba(100, 60, 180, 0.18) 0%, transparent 70%),
                   linear-gradient(160deg, #111116 0%, #1a1420 50%, #0f0f14 100%);
       background-color: #111116;
@@ -239,10 +241,6 @@
     }
 
     .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
       display: flex;
       align-items: center;
@@ -264,6 +262,133 @@
     .page-heading h3 {
       margin: 0;
       color: #ffffff;
+    }
+
+    .page-content {
+      flex: 1;
+      margin: var(--spacing-4);
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      transition: border-color var(--transition-fast);
+    }
+
+    .search-input-wrap:focus-within {
+      border-color: rgba(155, 127, 232, 0.5);
+    }
+
+    .search-input-wrap img {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      display: block;
+      opacity: 0.4;
+    }
+
+    .search-input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+    }
+
+    .search-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .search-results {
+      display: none;
+      flex-direction: column;
+      margin-top: var(--spacing-3);
+    }
+
+    .search-results.visible {
+      display: flex;
+    }
+
+    .search-result {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-3);
+      padding: var(--spacing-3) var(--spacing-3);
+      border-radius: 10px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .search-result:hover {
+      background-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .search-result-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      display: block;
+    }
+
+    .search-result-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-2);
+      min-width: 0;
+    }
+
+    .search-result-name {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-ui);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .search-result-platform {
+      font-size: var(--text-xs);
+      color: rgba(255, 255, 255, 0.4);
+      font-family: var(--font-ui);
+      white-space: nowrap;
+    }
+
+    .search-result-type {
+      font-size: var(--text-xs);
+      color: rgba(255, 255, 255, 0.35);
+      font-family: var(--font-ui);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .search-no-results {
+      display: none;
+      padding: var(--spacing-4) 0;
+      text-align: center;
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.3);
+      font-family: var(--font-ui);
+    }
+
+    .search-no-results.visible {
+      display: block;
     }
 
     @media (max-width: 767px) {
@@ -297,6 +422,15 @@
 
   <div class="page-heading">
     <h3>Search</h3>
+  </div>
+
+  <div class="page-content">
+    <div class="search-input-wrap">
+      <img src="https://initnexus.github.io/Core/media/icons/search.png" alt="">
+      <input class="search-input" type="text" placeholder="Search pages, services, etc..." id="search-input">
+    </div>
+    <div class="search-results" id="search-results"></div>
+    <div class="search-no-results" id="search-no-results">No results found.</div>
   </div>
 
   <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
@@ -402,5 +536,113 @@
   </footer>
 
   <script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+  <script>
+    const SEARCH_DATA_URL = 'https://initnexus.github.io/NexusByte-SMM/assets/data/indexing.json';
+
+    let searchData = null;
+
+    async function loadSearchData() {
+      try {
+        const res = await fetch(SEARCH_DATA_URL);
+        searchData = await res.json();
+      } catch (e) {
+        searchData = { services: [], pages: [] };
+      }
+    }
+
+    function getServiceNameCounts(results) {
+      const counts = {};
+      results.forEach(r => {
+        if (r._type === 'Service') {
+          counts[r.name] = (counts[r.name] || 0) + 1;
+        }
+      });
+      return counts;
+    }
+
+    function runSearch(query) {
+      const resultsEl = document.getElementById('search-results');
+      const noResultsEl = document.getElementById('search-no-results');
+      resultsEl.innerHTML = '';
+
+      if (!query.trim()) {
+        resultsEl.classList.remove('visible');
+        noResultsEl.classList.remove('visible');
+        return;
+      }
+
+      const q = query.toLowerCase();
+      const matched = [];
+
+      (searchData.services || []).forEach(item => {
+        if (
+          item.name.toLowerCase().includes(q) ||
+          item.platform.toLowerCase().includes(q)
+        ) {
+          matched.push({ ...item, _type: 'Service' });
+        }
+      });
+
+      (searchData.pages || []).forEach(item => {
+        if (item.name.toLowerCase().includes(q)) {
+          matched.push({ ...item, _type: 'Page' });
+        }
+      });
+
+      if (matched.length === 0) {
+        resultsEl.classList.remove('visible');
+        noResultsEl.classList.add('visible');
+        return;
+      }
+
+      noResultsEl.classList.remove('visible');
+
+      const serviceNameCounts = getServiceNameCounts(matched);
+
+      matched.forEach(item => {
+        const a = document.createElement('a');
+        a.className = 'search-result';
+        a.href = item.url;
+
+        const icon = document.createElement('img');
+        icon.className = 'search-result-icon';
+        icon.src = item.icon_url;
+        icon.alt = '';
+
+        const main = document.createElement('div');
+        main.className = 'search-result-main';
+
+        const name = document.createElement('span');
+        name.className = 'search-result-name';
+        name.textContent = item.name;
+
+        main.appendChild(name);
+
+        if (item._type === 'Service' && serviceNameCounts[item.name] > 1) {
+          const platform = document.createElement('span');
+          platform.className = 'search-result-platform';
+          platform.textContent = item.platform;
+          main.appendChild(platform);
+        }
+
+        const type = document.createElement('span');
+        type.className = 'search-result-type';
+        type.textContent = item._type;
+
+        a.appendChild(icon);
+        a.appendChild(main);
+        a.appendChild(type);
+        resultsEl.appendChild(a);
+      });
+
+      resultsEl.classList.add('visible');
+    }
+
+    document.getElementById('search-input').addEventListener('input', e => {
+      runSearch(e.target.value);
+    });
+
+    loadSearchData();
+  </script>
 </body>
 </html>
