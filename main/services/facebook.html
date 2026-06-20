@@ -14,6 +14,8 @@
     }
 
     body {
+      display: flex;
+      flex-direction: column;
       background: radial-gradient(ellipse at 50% 60%, rgba(100, 60, 180, 0.18) 0%, transparent 70%),
                   linear-gradient(160deg, #111116 0%, #1a1420 50%, #0f0f14 100%);
       background-color: #111116;
@@ -128,6 +130,79 @@
       font-family: var(--font-ui);
     }
 
+    .order-radio-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .order-radio {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: border-color var(--transition-fast);
+    }
+
+    .order-radio-inner {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: #9b7fe8;
+      display: none;
+    }
+
+    .order-radio-item.selected .order-radio {
+      border-color: #9b7fe8;
+    }
+
+    .order-radio-item.selected .order-radio-inner {
+      display: block;
+    }
+
+    .order-option-price.order-option-price {
+      font-size: var(--text-xs);
+      color: rgba(255, 255, 255, 0.4);
+      font-weight: var(--weight-medium);
+      font-family: var(--font-ui);
+      margin-left: var(--spacing-2);
+    }
+
+    .order-option-left {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .order-input-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .order-input-total {
+      position: absolute;
+      right: var(--spacing-4);
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-bold);
+      color: #9b7fe8;
+      font-family: var(--font-ui);
+      pointer-events: none;
+      display: none;
+    }
+
+    .order-input-total.visible {
+      display: block;
+    }
+
+    .order-input.has-total {
+      padding-right: var(--spacing-10);
+    }
+
     .sheet-overlay {
       display: none;
       position: fixed;
@@ -239,10 +314,6 @@
     }
 
     .site-footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
       border-top: 1px solid rgba(255, 255, 255, 0.09);
       display: flex;
       align-items: center;
@@ -264,6 +335,253 @@
     .page-heading h3 {
       margin: 0;
       color: #ffffff;
+    }
+
+    .page-content {
+      flex: 1;
+      margin: var(--spacing-4);
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-4);
+    }
+
+    .order-group {
+      margin-bottom: var(--spacing-3);
+    }
+
+    .order-bar {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      gap: var(--spacing-2);
+    }
+
+    .order-bar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .order-bar-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .order-bar-value {
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.45);
+      font-family: var(--font-ui);
+    }
+
+    .order-input {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      color: #ffffff;
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .order-input::placeholder {
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    .order-input:focus {
+      border-color: rgba(155, 127, 232, 0.5);
+    }
+
+    .proceed-btn {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #9b7fe8;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      margin-top: var(--spacing-2);
+    }
+
+    .proceed-btn:hover {
+      background-color: #b09af0;
+    }
+
+    .checkout-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 800;
+      background-color: #111116;
+      flex-direction: column;
+    }
+
+    .checkout-overlay.open {
+      display: flex;
+    }
+
+    .checkout-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-4);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      flex-shrink: 0;
+    }
+
+    .checkout-title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-display);
+    }
+
+    .checkout-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      padding: 0;
+    }
+
+    .checkout-close-btn:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .checkout-close-btn img {
+      width: 18px;
+      height: 18px;
+      display: block;
+    }
+
+    .checkout-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: var(--spacing-4);
+    }
+
+    .checkout-items-title {
+      margin: 0 0 var(--spacing-3);
+      color: #ffffff;
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+      text-align: left;
+    }
+
+    .checkout-items-empty {
+      color: rgba(255, 255, 255, 0.4);
+      font-size: var(--text-sm);
+      font-family: var(--font-ui);
+      text-align: left;
+    }
+
+    .checkout-item-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--spacing-3) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .checkout-item-row:last-child {
+      border-bottom: none;
+    }
+
+    .checkout-item-name {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .checkout-item-amount {
+      font-size: var(--text-sm);
+      color: rgba(255, 255, 255, 0.5);
+      font-family: var(--font-ui);
+    }
+
+    .checkout-total-row {
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: var(--spacing-4);
+      margin-top: var(--spacing-2);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .checkout-total-row.visible {
+      display: flex;
+    }
+
+    .checkout-total-label {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #ffffff;
+      font-family: var(--font-ui);
+    }
+
+    .checkout-total-value {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: #9b7fe8;
+      font-family: var(--font-ui);
+    }
+
+    .checkout-footer {
+      flex-shrink: 0;
+      padding: var(--spacing-4);
+      border-top: 1px solid rgba(255, 255, 255, 0.09);
+    }
+
+    .purchase-btn {
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #9b7fe8;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: var(--spacing-3) var(--spacing-4);
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      font-family: var(--font-ui);
+      cursor: pointer;
+      transition: background-color var(--transition-fast);
+      -webkit-tap-highlight-color: transparent;
+      text-align: center;
+      display: block;
+      text-decoration: none;
+    }
+
+    .purchase-btn:hover {
+      background-color: #b09af0;
     }
 
     @media (max-width: 767px) {
@@ -297,6 +615,64 @@
 
   <div class="page-heading">
     <h3>Facebook Services</h3>
+  </div>
+
+  <div class="page-content">
+
+    <div class="order-group">
+      <div class="order-bar">
+        <div class="order-bar-row" onclick="openOrderSheet('posts')">
+          <span class="order-bar-label">Posts</span>
+          <span class="order-bar-value" id="posts-bar-value">Select an option</span>
+        </div>
+        <div class="order-input-wrap">
+          <input class="order-input" type="text" inputmode="numeric" placeholder="Enter the amount" id="posts-amount-input">
+          <span class="order-input-total" id="posts-amount-total"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-group">
+      <div class="order-bar">
+        <div class="order-bar-row" onclick="openOrderSheet('stories')">
+          <span class="order-bar-label">Stories</span>
+          <span class="order-bar-value" id="stories-bar-value">Select an option</span>
+        </div>
+        <div class="order-input-wrap">
+          <input class="order-input" type="text" inputmode="numeric" placeholder="Enter the amount" id="stories-amount-input">
+          <span class="order-input-total" id="stories-amount-total"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-group">
+      <div class="order-bar">
+        <div class="order-bar-row" onclick="openOrderSheet('live')">
+          <span class="order-bar-label">Live</span>
+          <span class="order-bar-value" id="live-bar-value">Select an option</span>
+        </div>
+        <div class="order-input-wrap">
+          <input class="order-input" type="text" inputmode="numeric" placeholder="Enter the amount" id="live-amount-input">
+          <span class="order-input-total" id="live-amount-total"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="order-group">
+      <div class="order-bar">
+        <div class="order-bar-row" onclick="openOrderSheet('pages')">
+          <span class="order-bar-label">Pages</span>
+          <span class="order-bar-value" id="pages-bar-value">Select an option</span>
+        </div>
+        <div class="order-input-wrap">
+          <input class="order-input" type="text" inputmode="numeric" placeholder="Enter the amount" id="pages-amount-input">
+          <span class="order-input-total" id="pages-amount-total"></span>
+        </div>
+      </div>
+    </div>
+
+    <button class="proceed-btn" onclick="openCheckout()">Proceed</button>
+
   </div>
 
   <div id="sheet-overlay" class="sheet-overlay" data-sheet-close="sheet-menu"></div>
@@ -397,10 +773,242 @@
     </div>
   </div>
 
+  <div id="order-sheet-overlay" class="sheet-overlay" data-sheet-close="order-sheet"></div>
+
+  <div id="posts-sheet" class="sheet sheet-bottom">
+    <div class="sheet-close-bar" onclick="closeOrderSheet('posts')">
+      <div class="sheet-close-bar-inner"></div>
+    </div>
+    <div class="sheet-header">
+      <span class="sheet-title">Posts</span>
+    </div>
+    <div class="sheet-body" style="padding: var(--spacing-2) 0;">
+      <div class="list">
+        <div class="sheet-menu-item order-radio-item" data-group="posts" data-value="Views" data-price="0.02" data-per="100" onclick="selectOrderOption('posts', 'Views', 0.02, 100)"><div class="order-option-left"><span>Views</span><span class="order-option-price">£0.02 per 100</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="posts" data-value="Likes" data-price="0.05" data-per="100" onclick="selectOrderOption('posts', 'Likes', 0.05, 100)"><div class="order-option-left"><span>Likes</span><span class="order-option-price">£0.05 per 100</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="posts" data-value="Comments" data-price="0.15" data-per="10" onclick="selectOrderOption('posts', 'Comments', 0.15, 10)"><div class="order-option-left"><span>Comments</span><span class="order-option-price">£0.15 per 10</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="posts" data-value="Saves" data-price="0.06" data-per="50" onclick="selectOrderOption('posts', 'Saves', 0.06, 50)"><div class="order-option-left"><span>Saves</span><span class="order-option-price">£0.06 per 50</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="posts" data-value="Shares" data-price="0.10" data-per="10" onclick="selectOrderOption('posts', 'Shares', 0.10, 10)"><div class="order-option-left"><span>Shares</span><span class="order-option-price">£0.10 per 10</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="stories-sheet" class="sheet sheet-bottom">
+    <div class="sheet-close-bar" onclick="closeOrderSheet('stories')">
+      <div class="sheet-close-bar-inner"></div>
+    </div>
+    <div class="sheet-header">
+      <span class="sheet-title">Stories</span>
+    </div>
+    <div class="sheet-body" style="padding: var(--spacing-2) 0;">
+      <div class="list">
+        <div class="sheet-menu-item order-radio-item" data-group="stories" data-value="Views" data-price="0.02" data-per="100" onclick="selectOrderOption('stories', 'Views', 0.02, 100)"><div class="order-option-left"><span>Views</span><span class="order-option-price">£0.02 per 100</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="stories" data-value="Shares" data-price="0.08" data-per="10" onclick="selectOrderOption('stories', 'Shares', 0.08, 10)"><div class="order-option-left"><span>Shares</span><span class="order-option-price">£0.08 per 10</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="live-sheet" class="sheet sheet-bottom">
+    <div class="sheet-close-bar" onclick="closeOrderSheet('live')">
+      <div class="sheet-close-bar-inner"></div>
+    </div>
+    <div class="sheet-header">
+      <span class="sheet-title">Live</span>
+    </div>
+    <div class="sheet-body" style="padding: var(--spacing-2) 0;">
+      <div class="list">
+        <div class="sheet-menu-item order-radio-item" data-group="live" data-value="Viewers" data-price="0.25" data-per="100" onclick="selectOrderOption('live', 'Viewers', 0.25, 100)"><div class="order-option-left"><span>Viewers</span><span class="order-option-price">£0.25 per 100</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="live" data-value="Likes" data-price="0.10" data-per="15" onclick="selectOrderOption('live', 'Likes', 0.10, 15)"><div class="order-option-left"><span>Likes</span><span class="order-option-price">£0.10 per 15</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="live" data-value="Comments" data-price="0.30" data-per="20" onclick="selectOrderOption('live', 'Comments', 0.30, 20)"><div class="order-option-left"><span>Comments</span><span class="order-option-price">£0.30 per 20</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="live" data-value="Shares" data-price="0.05" data-per="15" onclick="selectOrderOption('live', 'Shares', 0.05, 15)"><div class="order-option-left"><span>Shares</span><span class="order-option-price">£0.05 per 15</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="pages-sheet" class="sheet sheet-bottom">
+    <div class="sheet-close-bar" onclick="closeOrderSheet('pages')">
+      <div class="sheet-close-bar-inner"></div>
+    </div>
+    <div class="sheet-header">
+      <span class="sheet-title">Pages</span>
+    </div>
+    <div class="sheet-body" style="padding: var(--spacing-2) 0;">
+      <div class="list">
+        <div class="sheet-menu-item order-radio-item" data-group="pages" data-value="Views" data-price="0.10" data-per="20" onclick="selectOrderOption('pages', 'Views', 0.10, 20)"><div class="order-option-left"><span>Views</span><span class="order-option-price">£0.10 per 20</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+        <div class="sheet-menu-item order-radio-item" data-group="pages" data-value="Likes" data-price="0.12" data-per="100" onclick="selectOrderOption('pages', 'Likes', 0.12, 100)"><div class="order-option-left"><span>Likes</span><span class="order-option-price">£0.12 per 100</span></div><div class="order-radio"><div class="order-radio-inner"></div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="checkout-overlay" class="checkout-overlay">
+    <div class="checkout-header">
+      <span class="checkout-title">Checkout</span>
+      <button class="checkout-close-btn" onclick="closeCheckout()">
+        <img src="https://initnexus.github.io/Core/media/icons/close.png" alt="">
+      </button>
+    </div>
+    <div class="checkout-body">
+      <p class="checkout-items-title">Your items</p>
+      <div id="checkout-items-list"></div>
+      <div class="checkout-total-row" id="checkout-total-row">
+        <span class="checkout-total-label">Total</span>
+        <span class="checkout-total-value" id="checkout-total-value">£0.00</span>
+      </div>
+    </div>
+    <div class="checkout-footer">
+      <a class="purchase-btn" href="https://t.me/InitNexus" target="_blank" rel="noopener noreferrer">Purchase</a>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>&copy; NexusByte SMM 2026. All Rights Reserved.</p>
   </footer>
 
   <script src="https://initnexus.github.io/Core/scripts/core.js"></script>
+  <script>
+    const orderSelections = {};
+    let activeOrderSheet = null;
+
+    function formatWithCommas(value) {
+      const digits = value.replace(/[^\d]/g, '');
+      if (!digits) return '';
+      return digits.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    function formatCurrency(value) {
+      return '£' + value.toFixed(2);
+    }
+
+    function calcItemTotal(key) {
+      const sel = orderSelections[key];
+      if (!sel) return 0;
+      const input = document.getElementById(`${key}-amount-input`);
+      const raw = input.value.replace(/[^\d]/g, '');
+      const amount = raw ? parseInt(raw, 10) : 0;
+      if (!amount) return 0;
+      return (amount / sel.per) * sel.price;
+    }
+
+    function updateInputTotalDisplay(key) {
+      const input = document.getElementById(`${key}-amount-input`);
+      const totalSpan = document.getElementById(`${key}-amount-total`);
+      const total = calcItemTotal(key);
+
+      if (total > 0) {
+        totalSpan.textContent = formatCurrency(total);
+        totalSpan.classList.add('visible');
+        input.classList.add('has-total');
+      } else {
+        totalSpan.textContent = '';
+        totalSpan.classList.remove('visible');
+        input.classList.remove('has-total');
+      }
+    }
+
+    function attachCommaFormatting(id) {
+      const key = id.replace('-amount-input', '');
+      const input = document.getElementById(id);
+      input.addEventListener('input', () => {
+        const cursorFromEnd = input.value.length - input.selectionStart;
+        input.value = formatWithCommas(input.value);
+        const newPos = input.value.length - cursorFromEnd;
+        input.setSelectionRange(newPos, newPos);
+        updateInputTotalDisplay(key);
+      });
+    }
+
+    ['posts-amount-input', 'stories-amount-input', 'live-amount-input', 'pages-amount-input'].forEach(attachCommaFormatting);
+
+    function openOrderSheet(key) {
+      closeOrderSheetAll();
+      const sheet = document.getElementById(`${key}-sheet`);
+      const overlay = document.getElementById('order-sheet-overlay');
+      if (!sheet) return;
+      overlay.style.display = 'block';
+      requestAnimationFrame(() => sheet.classList.add('open'));
+      activeOrderSheet = key;
+    }
+
+    function closeOrderSheetAll() {
+      if (activeOrderSheet) {
+        const sheet = document.getElementById(`${activeOrderSheet}-sheet`);
+        if (sheet) sheet.classList.remove('open');
+      }
+      document.getElementById('order-sheet-overlay').style.display = 'none';
+      activeOrderSheet = null;
+    }
+
+    function closeOrderSheet(key) {
+      closeOrderSheetAll();
+    }
+
+    function selectOrderOption(key, label, price, per) {
+      orderSelections[key] = { label, price, per };
+      document.getElementById(`${key}-bar-value`).textContent = label;
+      document.querySelectorAll(`[data-group="${key}"]`).forEach(el => {
+        el.classList.toggle('selected', el.getAttribute('data-value') === label);
+      });
+      updateInputTotalDisplay(key);
+      closeOrderSheetAll();
+    }
+
+    document.getElementById('order-sheet-overlay').addEventListener('click', closeOrderSheetAll);
+
+    function openCheckout() {
+      const list = document.getElementById('checkout-items-list');
+      list.innerHTML = '';
+
+      const keys = ['posts', 'stories', 'live', 'pages'];
+      let hasItems = false;
+      let grandTotal = 0;
+
+      keys.forEach(key => {
+        const sel = orderSelections[key];
+        const amountInput = document.getElementById(`${key}-amount-input`);
+        const amount = amountInput ? amountInput.value : '';
+
+        if (sel && amount) {
+          hasItems = true;
+          const itemTotal = calcItemTotal(key);
+          grandTotal += itemTotal;
+
+          const row = document.createElement('div');
+          row.className = 'checkout-item-row';
+
+          const name = document.createElement('span');
+          name.className = 'checkout-item-name';
+          name.textContent = `${key.charAt(0).toUpperCase() + key.slice(1)} - ${sel.label} (${amount})`;
+
+          const amt = document.createElement('span');
+          amt.className = 'checkout-item-amount';
+          amt.textContent = formatCurrency(itemTotal);
+
+          row.appendChild(name);
+          row.appendChild(amt);
+          list.appendChild(row);
+        }
+      });
+
+      const totalRow = document.getElementById('checkout-total-row');
+      const totalValue = document.getElementById('checkout-total-value');
+
+      if (!hasItems) {
+        const empty = document.createElement('p');
+        empty.className = 'checkout-items-empty';
+        empty.textContent = 'No items selected.';
+        list.appendChild(empty);
+        totalRow.classList.remove('visible');
+      } else {
+        totalValue.textContent = formatCurrency(grandTotal);
+        totalRow.classList.add('visible');
+      }
+
+      document.getElementById('checkout-overlay').classList.add('open');
+    }
+
+    function closeCheckout() {
+      document.getElementById('checkout-overlay').classList.remove('open');
+    }
+  </script>
 </body>
 </html>
