@@ -1,0 +1,411 @@
+{
+  "basic": {
+    "title": "NexusByte SMM",
+    "titleTemplate": "None",
+    "description": "Cheap and reliable SMM services for all major platforms.",
+    "keywords": [],
+    "author": "NexusByte Developer",
+    "organisation": "NexusByte Initiative",
+    "url": "https://initnexus.github.io/NexusByte-SMM",
+    "canonicalUrl": "",
+    "baseUrl": "https://initnexus.github.io/NexusByte-SMM",
+    "language": "English",
+    "locale": "",
+    "charset": "",
+    "viewport": "",
+    "themeColor": "Dark",
+    "backgroundColor": "",
+    "rating": "",
+    "revisitAfter": "",
+    "robots": "",
+    "googlebot": "",
+    "bingbot": ""
+  },
+  "identity": {
+    "type": "",
+    "category": "",
+    "subcategory": "",
+    "genre": "",
+    "tags": [],
+    "version": "",
+    "releaseDate": "",
+    "lastModified": "",
+    "contentLanguage": "",
+    "targetAudience": "",
+    "ageRating": "",
+    "accessibilityFeatures": [],
+    "platform": []
+  },
+  "openGraph": {
+    "type": "",
+    "title": "",
+    "description": "",
+    "url": "",
+    "image": "",
+    "imageAlt": "",
+    "imageWidth": "",
+    "imageHeight": "",
+    "imageType": "",
+    "video": "",
+    "videoAlt": "",
+    "videoWidth": "",
+    "videoHeight": "",
+    "videoType": "",
+    "audio": "",
+    "siteName": "",
+    "locale": "",
+    "localeAlternate": [],
+    "determiner": "",
+    "updatedTime": "",
+    "expirationTime": "",
+    "section": "",
+    "tag": []
+  },
+  "twitter": {
+    "card": "",
+    "title": "",
+    "description": "",
+    "image": "",
+    "imageAlt": "",
+    "site": "",
+    "siteId": "",
+    "creator": "",
+    "creatorId": "",
+    "player": "",
+    "playerWidth": "",
+    "playerHeight": "",
+    "playerStream": "",
+    "appNameIphone": "",
+    "appIdIphone": "",
+    "appUrlIphone": "",
+    "appNameIpad": "",
+    "appIdIpad": "",
+    "appUrlIpad": "",
+    "appNameGoogleplay": "",
+    "appIdGoogleplay": "",
+    "appUrlGoogleplay": ""
+  },
+  "icons": {
+    "favicon": "",
+    "favicon16": "",
+    "favicon32": "",
+    "favicon96": "",
+    "faviconIco": "",
+    "appleTouchIcon": "",
+    "appleTouchIcon57": "",
+    "appleTouchIcon60": "",
+    "appleTouchIcon72": "",
+    "appleTouchIcon76": "",
+    "appleTouchIcon114": "",
+    "appleTouchIcon120": "",
+    "appleTouchIcon144": "",
+    "appleTouchIcon152": "",
+    "appleTouchIcon180": "",
+    "androidIcon192": "",
+    "androidIcon256": "",
+    "androidIcon384": "",
+    "androidIcon512": "",
+    "maskIcon": "",
+    "maskIconColor": "",
+    "msTileImage": "",
+    "msTileColor": ""
+  },
+  "manifest": {
+    "path": "",
+    "name": "",
+    "shortName": "",
+    "description": "",
+    "startUrl": "",
+    "display": "",
+    "orientation": "",
+    "themeColor": "",
+    "backgroundColor": "",
+    "scope": "",
+    "lang": "",
+    "dir": "",
+    "categories": [],
+    "screenshots": [],
+    "shortcuts": []
+  },
+  "structuredData": {
+    "enabled": false,
+    "type": "",
+    "name": "",
+    "description": "",
+    "url": "",
+    "logo": "",
+    "image": [],
+    "sameAs": [],
+    "foundingDate": "",
+    "email": "",
+    "telephone": "",
+    "address": {
+      "streetAddress": "",
+      "addressLocality": "",
+      "addressRegion": "",
+      "postalCode": "",
+      "addressCountry": ""
+    },
+    "geo": {
+      "latitude": "",
+      "longitude": ""
+    },
+    "openingHours": [],
+    "priceRange": "",
+    "servesCuisine": "",
+    "aggregateRating": {
+      "ratingValue": "",
+      "reviewCount": "",
+      "bestRating": "",
+      "worstRating": ""
+    },
+    "breadcrumb": [],
+    "faqItems": [],
+    "videoObject": {
+      "name": "",
+      "description": "",
+      "thumbnailUrl": "",
+      "uploadDate": "",
+      "duration": "",
+      "contentUrl": "",
+      "embedUrl": ""
+    },
+    "softwareApplication": {
+      "applicationCategory": "",
+      "applicationSubCategory": "",
+      "operatingSystem": "",
+      "offers": {
+        "price": "",
+        "priceCurrency": "",
+        "availability": ""
+      },
+      "downloadUrl": "",
+      "softwareVersion": "",
+      "fileSize": "",
+      "memoryRequirements": "",
+      "processorRequirements": "",
+      "storageRequirements": "",
+      "screenshot": [],
+      "featureList": [],
+      "permissions": []
+    },
+    "game": {
+      "genre": [],
+      "gamePlatform": [],
+      "numberOfPlayers": {
+        "minValue": "",
+        "maxValue": ""
+      },
+      "playMode": "",
+      "applicationCategory": "Game",
+      "contentRating": "",
+      "inLanguage": []
+    },
+    "article": {
+      "headline": "",
+      "datePublished": "",
+      "dateModified": "",
+      "author": "",
+      "publisher": "",
+      "image": "",
+      "articleSection": "",
+      "wordCount": "",
+      "inLanguage": ""
+    },
+    "product": {
+      "name": "",
+      "description": "",
+      "image": [],
+      "brand": "",
+      "sku": "",
+      "gtin": "",
+      "mpn": "",
+      "color": "",
+      "material": "",
+      "weight": "",
+      "offers": {
+        "price": "",
+        "priceCurrency": "",
+        "availability": "",
+        "seller": ""
+      }
+    },
+    "event": {
+      "name": "",
+      "description": "",
+      "startDate": "",
+      "endDate": "",
+      "location": "",
+      "image": "",
+      "organizer": "",
+      "offers": {
+        "price": "",
+        "priceCurrency": "",
+        "availability": "",
+        "validFrom": ""
+      },
+      "eventStatus": "",
+      "eventAttendanceMode": "",
+      "isAccessibleForFree": false
+    },
+    "person": {
+      "name": "",
+      "jobTitle": "",
+      "email": "",
+      "telephone": "",
+      "url": "",
+      "image": "",
+      "sameAs": []
+    }
+  },
+  "alternates": {
+    "canonical": "",
+    "amphtml": "",
+    "hreflang": []
+  },
+  "pagination": {
+    "prev": "",
+    "next": ""
+  },
+  "verification": {
+    "google": "",
+    "bing": "",
+    "yandex": "",
+    "pinterest": "",
+    "norton": "",
+    "facebook": "",
+    "alexaVerify": ""
+  },
+  "analytics": {
+    "googleAnalyticsId": "",
+    "googleTagManagerId": "",
+    "googleSearchConsoleId": "",
+    "facebookPixelId": "",
+    "hotjarId": "",
+    "clarityId": "",
+    "mixpanelToken": "",
+    "segmentWriteKey": "",
+    "plausibleDomain": "",
+    "umamiWebsiteId": ""
+  },
+  "sitemap": {
+    "path": "",
+    "changefreq": "",
+    "priority": "",
+    "lastmod": "",
+    "excludeFromSitemap": false
+  },
+  "feeds": {
+    "rss": "",
+    "atom": "",
+    "json": ""
+  },
+  "security": {
+    "contentSecurityPolicy": "",
+    "referrerPolicy": "",
+    "permissionsPolicy": "",
+    "xFrameOptions": "",
+    "xContentTypeOptions": ""
+  },
+  "performance": {
+    "preconnect": [],
+    "dnsPrefetch": [],
+    "prefetch": [],
+    "preload": [],
+    "prerender": []
+  },
+  "social": {
+    "facebookAppId": "",
+    "facebookAdmins": [],
+    "pinterestRichPin": false,
+    "linkedInCompany": ""
+  },
+  "app": {
+    "appleItunesApp": {
+      "appId": "",
+      "affiliateData": "",
+      "appArgument": ""
+    },
+    "googlePlayApp": {
+      "packageName": "",
+      "appArgument": ""
+    },
+    "microsoftStoreApp": {
+      "appId": "",
+      "appArgument": ""
+    },
+    "webview": {
+      "allowedOrigins": [],
+      "userAgent": "",
+      "customScheme": ""
+    }
+  },
+  "game": {
+    "genre": [],
+    "engine": "",
+    "engineVersion": "",
+    "renderer": "",
+    "resolution": "",
+    "aspectRatio": "",
+    "frameRate": "",
+    "multiplayerSupport": false,
+    "maxPlayers": "",
+    "minPlayers": "",
+    "controlSchemes": [],
+    "storageRequirements": "",
+    "offlineSupport": false,
+    "saveSupport": false,
+    "leaderboardSupport": false,
+    "achievementSupport": false,
+    "monetisation": "",
+    "ageRating": "",
+    "contentDescriptors": [],
+    "releaseDate": "",
+    "updateDate": "",
+    "storeUrl": {
+      "web": "",
+      "ios": "",
+      "android": "",
+      "steam": "",
+      "itch": ""
+    }
+  },
+  "pwa": {
+    "enabled": false,
+    "serviceWorkerPath": "",
+    "offlinePage": "",
+    "cacheStrategy": "",
+    "installable": false,
+    "periodicSyncTag": "",
+    "pushNotificationsSupported": false,
+    "backgroundSync": false
+  },
+  "accessibility": {
+    "skipNavLink": "",
+    "ariaLandmarks": false,
+    "colorContrastCompliant": false,
+    "wcagLevel": "",
+    "keyboardNavigable": false,
+    "screenReaderOptimised": false,
+    "reducedMotionSupport": false,
+    "highContrastSupport": false,
+    "textResizeSupport": false,
+    "altTextCoverage": false
+  },
+  "contact": {
+    "email": "init.nexusbyte@gmail.com",
+    "supportEmail": "init.nexusbyte@gmail.com",
+    "privacyEmail": "init.nexusbyte@gmail.com",
+    "pressEmail": "init.nexusbyte@gmail.com",
+    "telephone": "",
+    "website": "https://initnexus.github.io/Website",
+    "privacyPolicyUrl": "https://initnexus.github.io/Core/information/documentation",
+    "termsOfServiceUrl": "https://initnexus.github.io/Core/information/documentation",
+    "cookiePolicyUrl": "https://initnexus.github.io/Core/information/documentation",
+    "supportUrl": "",
+    "bugReportUrl": "",
+    "changelogUrl": "",
+    "documentationUrl": ""
+  },
+  "custom": {}
+}

@@ -1,1 +1,17 @@
-
+{
+  "name": "NexusByte SMM",
+  "description": "Cheap and reliable SMM services for all major platforms.",
+  "version": "1.0.0",
+  "url": "https://initnexus.github.io/NexusByte-SMM",
+  "type": "Website",
+  "author": "NexusByte Developer",
+  "organisation": "NexusByte Initiative",
+  "css": "https://initnexus.github.io/Core/styling/core.css",
+  "js": "https://initnexus.github.io/Core/scripts/core.js",
+  "sitemap": "https://initnexus.github.io/NexusByte-SMM/assets/data/sitemap.json",
+  "metadata": "https://initnexus.github.io/NexusByte-SMM/assets/data/metadata.json",
+  "favicon": "https://initnexus.github.io/NexusByte-SMM/assets/media/favicon/default.png",
+  "defaultTheme": "Dark",
+  "contact": "init.nexusbyte@gmail.com",
+  "lastUpdated": "20/06/2026"
+}

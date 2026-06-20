@@ -1,0 +1,511 @@
+{
+  "rules": [
+    {
+      "userAgent": "*",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Googlebot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Googlebot-Image",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Googlebot-Video",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Googlebot-News",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "AdsBot-Google",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "AdsBot-Google-Mobile",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Bingbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "BingPreview",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "msnbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "msnbot-media",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Slurp",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "DuckDuckBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Baiduspider",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "YandexBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "YandexImages",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "YandexVideo",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "YandexNews",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Sogou",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "ia_archiver",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "archive.org_bot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Wayback",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "facebookexternalhit",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Facebot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Twitterbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "LinkedInBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Pinterest",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Pinterestbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Slackbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Slackbot-LinkExpanding",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "WhatsApp",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "TelegramBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Discordbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "SkypeUriPreview",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "CCBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "anthropic-ai",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "ClaudeBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Claude-Web",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "GPTBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "ChatGPT-User",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "OAI-SearchBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "PerplexityBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "YouBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Amazonbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Applebot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Applebot-Extended",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "DotBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "AhrefsBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "SemrushBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "MajesticBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "MJ12bot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "SeznamBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Screaming Frog SEO Spider",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "ScreamingFrogSEOSpider",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "rogerbot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Exabot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "GigaBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "HTTrack",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "WebCopier",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "WebReaper",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "WebStripper",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "SiteSnagger",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "WebSauger",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Offline Explorer",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Teleport",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "TeleportPro",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Wget",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "curl",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "python-requests",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Python-urllib",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "scrapy",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "HeadlessChrome",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "PhantomJS",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Puppeteer",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Playwright",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Selenium",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "DataForSeoBot",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Nmap",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Nikto",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "masscan",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "ZmEu",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "sqlmap",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    },
+    {
+      "userAgent": "Havij",
+      "disallow": ["/"],
+      "allow": [],
+      "crawlDelay": 0
+    }
+  ],
+  "sitemap": [],
+  "host": "",
+  "noai": true,
+  "noindex": true,
+  "noarchive": true,
+  "nosnippet": true,
+  "noimageindex": true,
+  "nocache": true,
+  "notranslate": true
+}
